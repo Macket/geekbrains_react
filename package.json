@@ -1,0 +1,33 @@
+{
+  "name": "geekbrains_react",
+  "version": "1.0.0",
+  "description": "## Оглавление",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --mode development",
+    "build": "webpack",
+    "server": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Macket/geekbrains_react.git"
+  },
+  "author": "Ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Macket/geekbrains_react/issues"
+  },
+  "homepage": "https://github.com/Macket/geekbrains_react#readme",
+  "dependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-loader": "^8.0.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
