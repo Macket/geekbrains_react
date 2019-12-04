@@ -1,36 +1,31 @@
 import React from 'react';
-import Message from './Message'
+import Message from './Message';
 
 export default class MessageField extends React.Component {
    state = {
-       messages: ['Привет', 'Как дела?'],
+       messages: [{ text: "Привет!", sender: 'bot' }, { text: "Как дела?", sender: 'bot' }],
    };
 
    componentDidUpdate() {
-       if (this.state.messages.length % 2 === 1) {
+       if (this.state.messages[this.state.messages.length - 1].sender === 'me') {
            setTimeout(() =>
-           this.setState(
-               { messages: [ ...this.state.messages, 'Не приставай ко мне, я робот!' ] }), 1000);
+                   this.setState({
+                       messages: [ ...this.state.messages, {text: 'Не приставай ко мне, я робот!', sender: 'bot'} ] }),
+               1000);
        }
    }
 
-
    handleClick = () => {
-       // const { messages } = this.state;  ПЛОХО!!!!
-       // messages.push('Нормально');  ОЧЕНЬ ПЛОХО!!!
-       this.setState({ messages: [...this.state.messages, 'Нормально'] });
+       this.setState({ messages: [ ...this.state.messages, {text: 'Нормально', sender: 'me'} ] });
    };
 
    render() {
-       const messageElements = this.state.messages.map((text, index) =>
-           <Message key={ index } text={ text } />);
+       const messageElements = this.state.messages.map((message, index) => (
+           <Message key={ index } text={ message.text } />));
 
-       return (
-           <div>
-               <h1>Сообщения</h1>
-               { messageElements }
-               <button onClick={ this.handleClick }>Отправить сообщение</button>
-           </div>
-       )
+       return <div>
+           { messageElements }
+           <button onClick={ this.handleClick }>Отправить сообщение</button>
+       </div>
    }
 }
