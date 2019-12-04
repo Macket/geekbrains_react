@@ -11,6 +11,8 @@ module.exports = {
        filename: 'app.js',
    },
 
+   watch: process.argv[process.argv.length - 1] === 'development',
+
    module: {
        rules: [
            {
@@ -19,9 +21,23 @@ module.exports = {
                loader: 'babel-loader',
                exclude: /node_modules/,
                options: {
-                 presets: ['@babel/env', '@babel/react'],
+                   presets: ['@babel/env', '@babel/react'],
+                   plugins: [
+                       [
+                           "@babel/plugin-proposal-class-properties",
+                           {
+                               "loose": true
+                           }
+                       ]
+                   ]
+
                }
            },
        ],
    },
+
+    resolve: {
+       modules: [`${__dirname}/static_src`, 'node_modules'],
+       extensions: ['.js', '.jsx'],
+    },
 };
