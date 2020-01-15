@@ -21,17 +21,16 @@ class MessageField extends React.Component {
         input: '',
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if (Object.keys(prevProps.messages).length < Object.keys(this.props.messages).length &&
-            this.props.messages[Object.keys(this.props.messages).length].sender === 'me') {
-            setTimeout(() => this.sendMessage('Не приставай ко мне, я робот!', 'bot'), 1000);
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (Object.keys(prevProps.messages).length < Object.keys(this.props.messages).length &&
+    //         this.props.messages[Object.keys(this.props.messages).length].sender === 'me') {
+    //         setTimeout(() => this.sendMessage('Не приставай ко мне, я робот!', 'bot'), 1000);
+    //     }
+    // }
 
     sendMessage = (message, sender) => {
        const { chatId, messages } = this.props;
        const messageId = Object.keys(messages).length + 1;
-       console.log(messageId, message, sender, chatId);
        this.props.sendMessage(messageId, message, sender, chatId);
     };
 
