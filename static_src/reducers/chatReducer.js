@@ -3,18 +3,17 @@ import { SEND_MESSAGE } from '../actions/messageActions';
 import { ADD_CHAT } from "../actions/chatActions";
 
 const initialStore = {
-   chats: {
+    chats: {
        1: {title: 'Чат 1', messageList: []},
        2: {title: 'Чат 2', messageList: []},
        3: {title: 'Чат 3', messageList: []},
-   },
+    }
 };
 
 
 export default function chatReducer(store = initialStore, action) {
    switch (action.type) {
        case SEND_MESSAGE: {
-           console.log(action);
            return update(store, {
                chats: { $merge: { [action.chatId]: {
                    title: store.chats[action.chatId].title,
